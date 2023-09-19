@@ -8,8 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "postinstall": "husky install",
-    "format": "prettier --cache --write .",
-    "lint": "eslint --cache ."
+    "format": "prettier --write --cache",
+    "lint": "eslint --cache . --max-warnings 0",
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -30,11 +31,5 @@
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "vite": "^4.4.5"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "prettier --cache --write",
-      "eslint --cache --fix --max-warnings=0"
-    ]
   }
 }
