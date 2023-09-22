@@ -8,6 +8,20 @@
 - react: 18
 - react-dom: 18
 
+## Local Setting
+
+1. git clone <https://github.com/PNU-AID/AID-WEB-client.git>
+2. cd AID-WEB-client
+3. yarn install
+4. yarn dev
+
+- yarn add: 패키지 설치
+- yarn dev: 실행
+- yarn build: 빌드
+- yarn preview: 빌드 파일 실행
+
+eslint와 prettier를 적용하려면, VS Code의 extensions인 Eslint와 Prettier를 설치한다.
+
 ## Commit Rules
 
 - [전체 규칙](https://overcome-the-limits.tistory.com/entry/%ED%98%91%EC%97%85-%ED%98%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-git-%EC%BB%A4%EB%B0%8B%EC%BB%A8%EB%B2%A4%EC%85%98-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0)
