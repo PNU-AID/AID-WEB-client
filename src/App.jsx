@@ -1,12 +1,14 @@
 import './App.css';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-10 bg-gray-100">
+      <h1 className="text-3xl font-bold">AID</h1>
       <Login />
-    </>
+      <SignUp />
+    </div>
   );
 }
 
