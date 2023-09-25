@@ -16,5 +16,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'react/jsx-sort-props': 'warn',
+    'no-unused-vars': 'warn',
   },
 };
