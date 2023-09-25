@@ -1,22 +1,22 @@
 import { useRef } from 'react';
 import axios from 'axios';
 
-function Login() {
+function SignUp() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  function handleLogin(e) {
+  const handleSignUp = (e) => {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
-    if (email.value === '' || password.value === '') {
+    if (email === '' || password === '') {
       alert('Please fill out all fields');
       return;
     }
 
     axios
-      .post('http://127.0.0.1/api/auth/login', {
+      .post('http://127.0.0.1/api/auth/signup', {
         email: email,
         password: password,
       })
@@ -26,11 +26,12 @@ function Login() {
         passwordRef.current.value = '';
       })
       .catch((e) => console.error('Error: ', e));
-  }
+  };
+
   return (
     <div className="p-8 text-center bg-white rounded-lg shadow-md w-96">
       <form className="flex flex-col items-center gap-5 w-300">
-        <label className="text-center">AID 로그인</label>
+        <label className="text-center">AID 회원가입</label>
         <input
           ref={emailRef}
           id="email"
@@ -48,17 +49,17 @@ function Login() {
           required
         />
         <button
-          onClick={handleLogin}
+          onClick={handleSignUp}
           className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
         >
-          로그인
+          회원가입
         </button>
       </form>
-      <a href="/signup" className="text-blue-500 underline">
-        signup
+      <a href="/login" className="text-blue-500 underline">
+        login
       </a>
     </div>
   );
 }
 
-export default Login;
+export default SignUp;
