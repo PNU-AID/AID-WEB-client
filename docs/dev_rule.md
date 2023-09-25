@@ -10,7 +10,7 @@
 feat/<기능 내용>에서 작업한 후 아래 내용 실행
 
 ```sh
-git pull upstream dev # 달라진 내용 있으면 반영
+git pull origin dev # 달라진 내용 있으면 반영
 git checkout -b dev
 git merge feat/<기능 내용>
 ```
