@@ -55,5 +55,5 @@ git merge feat/<기능 내용>
 
 ## React Code Style
 
-- 함수명, 변수명 : snake case
+- 함수명, 변수명 : camelCase
 - 컴포넌트명 : PascalCase
