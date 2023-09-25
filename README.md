@@ -1,40 +1,13 @@
-# AID-WEB-client
+# AID 동아리 웹 프론트엔드
 
-## Environment
+## Docs Link
 
-- node: 18 이상
-- yarn: 1.22.19
-- vite: ^4.4.5
-- react: 18
-- react-dom: 18
+1. [**개발 규칙**](./docs/dev_rule.md)
+2. [**시스템 개요**](./docs/system_architecture.md)
+3. [**로컬 환경 설정**](./docs/local_setting.md)
+4. [**AWS 환경 설정**](./docs/aws_setting.md)
 
-## Local Setting
+## Contributor
 
-1. git clone <https://github.com/PNU-AID/AID-WEB-client.git>
-2. cd AID-WEB-client
-3. yarn install
-4. yarn dev
-
-- yarn add: 패키지 설치
-- yarn dev: 실행
-- yarn build: 빌드
-- yarn preview: 빌드 파일 실행
-
-eslint와 prettier를 적용하려면, VS Code의 extensions인 Eslint와 Prettier를 설치한다.
-
-## Commit Rules
-
-- [전체 규칙](https://overcome-the-limits.tistory.com/entry/%ED%98%91%EC%97%85-%ED%98%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-git-%EC%BB%A4%EB%B0%8B%EC%BB%A8%EB%B2%A4%EC%85%98-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0)
-- Feat: 새로운 기능을 추가할 경우
-- Fix: 버그를 고친 경우
-- Design: CSS 등 사용자 UI 디자인 변경
-- !BREAKING CHANGE: 커다란 API 변경의 경우
-- !HOTFIX: 급하게 치명적인 버그를 고쳐야하는 경우
-- Style: 코드 포맷 변경, 세미 콜론 누락, 코드 수정이 없는 경우
-- Refactor: 프로덕션 코드 리팩토링
-- Comment: 필요한 주석 추가 및 변경
-- Docs: 문서를 수정한 경우
-- Test: 테스트 추가, 테스트 리팩토링(프로덕션 코드 변경 X)
-- Chore: 빌드 태스트 업데이트, 패키지 매니저를 설정하는 경우(프로덕션 코드 변경 X)
-- Rename: 파일 혹은 폴더명을 수정하거나 옮기는 작업만인 경우
-- Remove: 파일을 삭제하는 작업만 수행한 경우
+- 김민석: @KimCookieYa
+- 이서연
