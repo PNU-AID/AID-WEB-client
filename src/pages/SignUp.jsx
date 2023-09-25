@@ -33,29 +33,29 @@ function SignUp() {
       <form className="flex flex-col items-center gap-5 w-300">
         <label className="text-center">AID 회원가입</label>
         <input
-          ref={emailRef}
-          id="email"
-          type="email"
-          placeholder="Email"
           className="px-4 py-2 border border-gray-300 rounded-lg"
+          id="email"
+          placeholder="Email"
+          ref={emailRef}
           required
+          type="email"
         />
         <input
-          ref={passwordRef}
-          id="password"
-          type="password"
-          placeholder="Password"
           className="px-4 py-2 border border-gray-300 rounded-lg"
+          id="password"
+          placeholder="Password"
+          ref={passwordRef}
           required
+          type="password"
         />
         <button
-          onClick={handleSignUp}
           className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+          onClick={handleSignUp}
         >
           회원가입
         </button>
       </form>
-      <a href="/login" className="text-blue-500 underline">
+      <a className="text-blue-500 underline" href="/login">
         login
       </a>
     </div>
