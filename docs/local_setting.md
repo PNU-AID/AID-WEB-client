@@ -1,14 +1,16 @@
 # How to start
 
+개인 Repo로 fork하지 말고, origin에서 개별 브랜치에서 작업하고 PR 생성 후 merge하도록 한다.
+
 ## Clone
 
 ```sh
-git clone [fork한 본인 repo의 url]
-git remote add upstream https://github.com/PNU-AID/AID_WEB_client
+git clone https://github.com/PNU-AID/AID_WEB_frontend.git
+cd AID_WEB_frontend
 git remote -v
 git checkout -t origin/dev
-# upstream(협업 repo내용)과 동기화 하려면 아래 명령어 실행
-git pull upstream dev
+# origin/dev와 동기화 하려면 아래 명령어 실행
+git pull origin dev
 # 이후 기능 브랜치 파서 작업
 git checkout -b feat/<기능 내용>
 ```
