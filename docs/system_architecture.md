@@ -7,4 +7,6 @@
 - vite: ^4.4.5
 - react: 18
 - react-dom: 18
+- react-router-dom: 6
 - tailwindcss: ^3.3.3
+- aos: ^2.3.4
