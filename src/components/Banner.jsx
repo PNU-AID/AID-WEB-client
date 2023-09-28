@@ -3,8 +3,8 @@ import image from '../assets/images/banner.png';
 function Banner() {
   return (
     <section className="h-screen lg:h-[calc(100vh-4em)] bg-gradient-to-b from-[#FFFFFF] to-[#F6FAFD]">
-      <div className="container mx-auto h-full relative">
-        <div className="flex flex-col xl:flex-row items-center h-full md:py-24">
+      <div className="container relative h-full mx-auto">
+        <div className="flex flex-col items-center h-full xl:flex-row md:py-24">
           {/* text */}
           <div className="text-center xl:text-left xl:absolute">
             {/* title */}
@@ -33,7 +33,7 @@ function Banner() {
             data-aos="fade-up"
             data-aos-delay="700"
           >
-            <img src={image} alt="Banner_img" />
+            <img alt="Banner_img" src={image} />
           </div>
         </div>
       </div>
