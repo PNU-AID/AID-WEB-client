@@ -33,13 +33,13 @@ function Curriculum() {
             const { image, bgImage, title, description, linkText } = feature;
             return (
               <div
-                key={index}
                 className="w-full max-w-[530px] h-[358px] relative flex flex-col items-center justify-center xl:flex-row xl:justify-start mx-auto"
                 data-aos="zoom-in"
                 data-aos-once="true"
+                key={index}
               >
                 {/* bg image */}
-                <div className="hidden xl:flex absolute top-0 right-0 -z-10">
+                <div className="absolute top-0 right-0 hidden xl:flex -z-10">
                   <img src={bgImage} />
                 </div>
                 {/* icon image */}
@@ -53,7 +53,7 @@ function Curriculum() {
                 {/* text */}
                 <div className="max-w-[220px]">
                   <h3 className="text-[#212353] text-[24px] mb-4">{title}</h3>
-                  <p className="font-light italic mb-4">{description}</p>
+                  <p className="mb-4 italic font-light">{description}</p>
                   {/* link & arrow */}
                   <div className="flex items-center gap-x-2 group">
                     <a className="text-[#212353] font-bold" href="#">
