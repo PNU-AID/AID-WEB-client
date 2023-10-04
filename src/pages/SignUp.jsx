@@ -16,10 +16,16 @@ function SignUp() {
     }
 
     axios
-      .post('http://127.0.0.1/api/auth/signup', {
-        email: email,
-        password: password,
-      })
+      .post(
+        'http://127.0.0.1/api/auth/signup',
+        {
+          email: email,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log(res);
         emailRef.current.value = '';
