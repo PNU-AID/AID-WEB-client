@@ -18,16 +18,16 @@ function App() {
   });
 
   return (
-    <AuthProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <Header />
         <Routes>
           <Route element={<Home />} index />
           <Route element={<Login />} path="/login" />
           <Route element={<SignUp />} path="/signup" />
         </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

@@ -1,7 +1,7 @@
 // import components
-import Logo from '../assets/images/logo.png';
-import { useAuth } from '../auths/AuthContext';
 import { Link } from 'react-router-dom';
+import Logo from '../assets/images/logo.png';
+import { useAuth } from '../hooks/useAuth.js';
 
 const Header = () => {
   const { isLoggedIn, logout, userEmail } = useAuth();
@@ -11,33 +11,44 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-x-[120px]">
-            <a href="/">
+            <Link to="/">
               <img alt="logo_img" src={Logo} />
-            </a>
+            </Link>
             <div className="hidden lg:flex">
               <nav>
                 <ul className="flex gap-x-8">
                   <li key="0">
-                    <a href="/about">About</a>
+                    <Link to="/about">About</Link>
                   </li>
                   <li key="1">
-                    <a href="/study">Study</a>
+                    <Link to="/study">Study</Link>
                   </li>
                 </ul>
               </nav>
             </div>
           </div>
           {isLoggedIn ? (
-            <div className="flex gap-6">
-              {userEmail}
-              <div className="text-red-500" onClick={logout}>
+            <div className="flex gap-2">
+              <div className="px-4 py-2">{userEmail}</div>
+              <div
+                className="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600"
+                onClick={logout}
+              >
                 Logout
               </div>
             </div>
           ) : (
-            <Link className="text-blue-500" to="/login">
-              Login
-            </Link>
+            <div className="flex gap-2">
+              <Link
+                className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                to="/login"
+              >
+                Login
+              </Link>
+              <Link className="px-4 py-2 text-blue-500" to="/signup">
+                signup
+              </Link>
+            </div>
           )}
         </div>
       </div>

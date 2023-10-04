@@ -1,22 +1,22 @@
-import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import axios from 'axios';
-
-import { useAuth } from '../auths/AuthContext';
+import { useAuth } from '../hooks/useAuth.js';
 
 function Login() {
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const navigate = useNavigate();
-  const { login } = useAuth();
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+  const { login, routeToHomePage } = useAuth();
 
   function handleLogin(e) {
     e.preventDefault();
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
 
-    if (email.value === '' || password.value === '') {
-      alert('Please fill out all fields');
+    const email = user.email;
+    const password = user.password;
+
+    if (email === '' || password === '') {
+      alert('Please fill out all fields!');
       return;
     }
 
@@ -34,35 +34,49 @@ function Login() {
       .then((res) => {
         if (res.status === 200) {
           login(email, password);
-          navigate('/');
+          routeToHomePage();
         } else {
           console.error(res);
+          alert('로그인이 실패했습니다.');
         }
       })
       .catch((e) => {
         console.error('Error: ', e);
-        alert('로그인이 실패했습니다.');
+        alert('Server Error');
       });
   }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUser((state) => {
+      return {
+        ...state,
+        [name]: value,
+      };
+    });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen space-y-10 bg-gray-100">
-      <h1 className="text-3xl font-bold">AID</h1>
+      <h1 className="text-4xl font-bold">로그인</h1>
       <div className="p-8 text-center bg-white rounded-lg shadow-md w-96">
-        <form className="flex flex-col items-center gap-5 w-300">
-          <label className="text-center">AID 로그인</label>
+        <form
+          className="flex flex-col items-center gap-5 w-300"
+          onSubmit={handleLogin}
+        >
           <input
             className="px-4 py-2 border border-gray-300 rounded-lg"
-            id="email"
-            placeholder="Email"
-            ref={emailRef}
+            name="email"
+            onChange={handleInputChange}
+            placeholder="email"
             required
             type="email"
           />
           <input
             className="px-4 py-2 border border-gray-300 rounded-lg"
-            id="password"
-            placeholder="Password"
-            ref={passwordRef}
+            name="password"
+            onChange={handleInputChange}
+            placeholder="password"
             required
             type="password"
           />
@@ -73,9 +87,6 @@ function Login() {
             로그인
           </button>
         </form>
-        <a className="text-blue-500 underline" href="/signup">
-          signup
-        </a>
       </div>
     </div>
   );
