@@ -18,5 +18,6 @@ module.exports = {
     ],
     'react/jsx-sort-props': 'warn',
     'no-unused-vars': 'warn',
+    'react/prop-types': 'off',
   },
 };
