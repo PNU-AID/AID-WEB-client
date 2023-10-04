@@ -3,7 +3,7 @@ import { getCookie } from './Cookie';
 
 const ACCESS_TOKEN_NAME = import.meta.env.VITE_ACCESS_TOKEN_NAME;
 
-export function postWithToken(url: string, data: any) {
+export function postWithToken(url, data) {
   const token = getCookie(ACCESS_TOKEN_NAME);
   return axios.post(url, data, {
     headers: {
@@ -12,7 +12,7 @@ export function postWithToken(url: string, data: any) {
   });
 }
 
-export function getWithToken(url: string) {
+export function getWithToken(url) {
   const token = getCookie(ACCESS_TOKEN_NAME);
   return axios.get(url, {
     headers: {
@@ -21,7 +21,7 @@ export function getWithToken(url: string) {
   });
 }
 
-export function deleteWithToken(url: string) {
+export function deleteWithToken(url) {
   const token = getCookie(ACCESS_TOKEN_NAME);
   return axios.delete(url, {
     headers: {
@@ -30,7 +30,7 @@ export function deleteWithToken(url: string) {
   });
 }
 
-export function putWithToken(url: string, data: any) {
+export function putWithToken(url, data) {
   const token = getCookie('access_token');
   return axios.put(url, data, {
     headers: {

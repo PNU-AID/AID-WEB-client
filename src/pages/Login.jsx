@@ -1,9 +1,14 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
+import { useAuth } from '../auths/AuthContext';
 
 function Login() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   function handleLogin(e) {
     e.preventDefault();
@@ -27,11 +32,17 @@ function Login() {
         }
       )
       .then((res) => {
-        console.log(res);
-        emailRef.current.value = '';
-        passwordRef.current.value = '';
+        if (res.status === 200) {
+          login(email, password);
+          navigate('/');
+        } else {
+          console.error(res);
+        }
       })
-      .catch((e) => console.error('Error: ', e));
+      .catch((e) => {
+        console.error('Error: ', e);
+        alert('로그인이 실패했습니다.');
+      });
   }
   return (
     <div className="flex flex-col items-center justify-center min-h-screen space-y-10 bg-gray-100">

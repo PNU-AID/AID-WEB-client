@@ -1,9 +1,11 @@
 import { useRef } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -27,11 +29,16 @@ function SignUp() {
         }
       )
       .then((res) => {
-        console.log(res);
-        emailRef.current.value = '';
-        passwordRef.current.value = '';
+        if (res.status === 200) {
+          navigate('/login');
+        } else {
+          console.error(res);
+        }
       })
-      .catch((e) => console.error('Error: ', e));
+      .catch((e) => {
+        console.error('Error: ', e);
+        alert('이미 존재하는 이메일입니다.');
+      });
   };
 
   return (
