@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo.png';
 import { useAuth } from '../hooks/useAuth.js';
+import { routerInfoList } from '../pages/Router';
 
 const Header = () => {
   const { isLoggedIn, logout, userEmail } = useAuth();
@@ -17,12 +18,13 @@ const Header = () => {
             <div className="hidden lg:flex">
               <nav>
                 <ul className="flex gap-x-8">
-                  <li key="0">
-                    <Link to="/about">About</Link>
-                  </li>
-                  <li key="1">
-                    <Link to="/study">Study</Link>
-                  </li>
+                  {routerInfoList.slice(3).map((routerInfo) => {
+                    return (
+                      <li key={routerInfo.path}>
+                        <Link to={routerInfo.path}>{routerInfo.label}</Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
             </div>
