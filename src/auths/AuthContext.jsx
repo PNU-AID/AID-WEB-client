@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
@@ -8,38 +8,40 @@ export function AuthProvider({ children }) {
   const [userEmail, setUserEmail] = useState('');
   const navigate = useNavigate();
 
-  const login = (email) => {
-    setIsLoggedIn(true);
-    setUserEmail(email);
-    navigate('/');
-  };
+  const login = useCallback(
+    (email) => {
+      setIsLoggedIn(true);
+      setUserEmail(email);
+      navigate('/');
+    },
+    [navigate]
+  );
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setIsLoggedIn(false);
     setUserEmail('');
     navigate('/');
-  };
+  }, [navigate]);
 
-  const routeToLoginPage = () => {
+  const routeToLoginPage = useCallback(() => {
     navigate('/login');
-  };
+  }, [navigate]);
 
-  const routeToHomePage = () => {
+  const routeToHomePage = useCallback(() => {
     navigate('/');
-  };
+  }, [navigate]);
 
-  return (
-    <AuthContext.Provider
-      value={{
-        isLoggedIn,
-        login,
-        logout,
-        userEmail,
-        routeToLoginPage,
-        routeToHomePage,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
+  const value = useMemo(
+    () => ({
+      isLoggedIn,
+      login,
+      logout,
+      userEmail,
+      routeToLoginPage,
+      routeToHomePage,
+    }),
+    [isLoggedIn, login, logout, userEmail, routeToLoginPage, routeToHomePage]
   );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
