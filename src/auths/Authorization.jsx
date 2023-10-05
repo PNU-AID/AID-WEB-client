@@ -7,6 +7,7 @@ function Authorization({ children }) {
   useEffect(() => {
     if (!isLoggedIn) {
       alert('You need to login first!');
+      routeToLoginPage();
     }
   }, [isLoggedIn, routeToLoginPage]);
 
