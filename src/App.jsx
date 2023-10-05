@@ -6,12 +6,15 @@ import Header from './components/Header';
 import { AuthProvider } from './auths/AuthContext';
 import { routerInfoList } from './pages/Router';
 import Authorization from './auths/Authorization';
+import { useEffect } from 'react';
 
 function App() {
-  Aos.init({
-    duration: 1000,
-    offset: 0,
-  });
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      offset: 0,
+    });
+  }, []);
 
   return (
     <BrowserRouter>
