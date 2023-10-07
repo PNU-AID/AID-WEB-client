@@ -1,7 +1,7 @@
-import { data } from '../assets/data';
+import { homeData } from '../assets/data';
 
 function Curriculum() {
-  const { title, subtitle, list } = data;
+  const { title, subtitle, list } = homeData;
 
   return (
     <section className="my-[70px] xl:my-[150px]">
