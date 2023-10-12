@@ -28,7 +28,7 @@ function SignUp() {
 
     axios
       .post(
-        'http://127.0.0.1/api/auth/signup',
+        import.meta.env.VITE_SERVER_URL + '/api/auth/signup',
         {
           email: email,
           password: password,

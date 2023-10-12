@@ -22,7 +22,7 @@ function Login() {
 
     axios
       .post(
-        'http://127.0.0.1/api/auth/login',
+        import.meta.env.VITE_SERVER_URL + '/api/auth/login',
         {
           email: email,
           password: password,
