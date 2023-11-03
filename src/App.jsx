@@ -1,14 +1,44 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import './App.css';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
+import Header from './components/Header';
+import { AuthProvider } from './auths/AuthContext';
+import { routerInfoList } from './pages/Router';
+import Authorization from './auths/Authorization';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000,
+      offset: 0,
+    });
+  }, []);
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen space-y-10 bg-gray-100">
-      <h1 className="text-3xl font-bold">AID</h1>
-      <Login />
-      <SignUp />
-    </div>
+    <BrowserRouter>
+      <AuthProvider>
+        <Header />
+        <Routes>
+          {routerInfoList.map((routerInfo) => {
+            return (
+              <Route
+                element={
+                  routerInfo.withAuthorization ? (
+                    <Authorization>{routerInfo.element}</Authorization>
+                  ) : (
+                    routerInfo.element
+                  )
+                }
+                key={routerInfo.path}
+                path={routerInfo.path}
+              />
+            );
+          })}
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
