@@ -2,11 +2,10 @@
 import { Link } from 'react-router-dom';
 import Logo from '../assets/images/logo.png';
 import { useAuth } from '../hooks/useAuth.js';
-import { routerInfoList } from '../pages/Router';
 
-const Header = () => {
-  const { isLoggedIn, logout, userEmail } = useAuth();
-
+const Header = ({ headerContent }) => {
+  const { isLoggedIn, setLogout, userProfile } = useAuth();
+  console.log(userProfile);
   return (
     <header className="relative top-0 z-20 p-4 px-4 mb-12 bg-white border-b border-gray-200 lg:mb-0 lg:px-0">
       <div className="container mx-auto">
@@ -18,23 +17,41 @@ const Header = () => {
             <div className="hidden lg:flex">
               <nav>
                 <ul className="flex gap-x-8">
-                  {routerInfoList.slice(3).map((routerInfo) => {
-                    return (
-                      <li key={routerInfo.path}>
-                        <Link to={routerInfo.path}>{routerInfo.label}</Link>
-                      </li>
-                    );
-                  })}
+                  {headerContent
+                    .filter((element) => {
+                      if (!element.withAuth && !element.isAdminPage) {
+                        return true;
+                      }
+
+                      if (element.isAdminPage) {
+                        return (
+                          isLoggedIn && userProfile == 'min49590@naver.com'
+                        );
+                      }
+                      return !!userProfile;
+                    })
+                    .map((element) => {
+                      return (
+                        <li key={element.id}>
+                          <Link
+                            className="text-blue-500 hover:text-blue-600"
+                            to={element.path}
+                          >
+                            {element.label}
+                          </Link>
+                        </li>
+                      );
+                    })}
                 </ul>
               </nav>
             </div>
           </div>
           {isLoggedIn ? (
             <div className="flex gap-2">
-              <div className="px-4 py-2">{userEmail}</div>
+              <div className="px-4 py-2">{userProfile.email}</div>
               <div
                 className="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600"
-                onClick={logout}
+                onClick={setLogout}
               >
                 Logout
               </div>
