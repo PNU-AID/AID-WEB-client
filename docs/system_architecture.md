@@ -10,3 +10,7 @@
 - react-router-dom: 6
 - tailwindcss: ^3.3.3
 - aos: ^2.3.4
+
+## Pipeline
+
+![](./pipeline.png)
