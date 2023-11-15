@@ -1,6 +1,7 @@
 # Branch Rule
 
-> **main**: PR만 가능한 branch, PR시 자동으로 배포하는 github action 실행
+> **main**: PR만 가능한 default branch, PR시 자동으로 배포하는 github action 실행
+> **staging**: PR만 가능한 test deploy branch, PR시 자동으로 배포하는 github action 실행
 > **dev**: 실제 개발 브랜치, PR은 이곳으로 하고 로컬 테스트를 한다.
 > **feat/<기능>**: clone후 작업해야할 브랜치, 이런 이름의 브랜치를 파고 작업후 dev로 PR한다.
 > **hotfix/<수정내용>**: 긴급한 수정내용인 경우 main에서 새로 분기하여 작업해 merge한다.
