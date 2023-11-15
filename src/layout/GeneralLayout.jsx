@@ -7,15 +7,13 @@ import { HeaderContent } from '../pages/Router.jsx';
 import { useRouter } from '../hooks/useRouter.js';
 
 function GeneralLayout({ children, withAuth, isAdminPage }) {
-  const { isLoginedIn, userProfile, setLogin } = useAuth();
+  const { isLoggedIn, userProfile, setLogin } = useAuth();
   const { routeTo } = useRouter();
 
   const fetchUserProfile = useCallback(async () => {
     const userProfileResponse = await getCurrentUserInfo();
-    console.log('userProfileResponse', userProfileResponse);
-    if (userProfileResponse === null) {
+    if (!isLoggedIn && userProfileResponse !== null) {
       setLogin(userProfileResponse);
-      routeTo('/login');
       return;
     }
   }, [setLogin, routeTo]);
@@ -24,17 +22,20 @@ function GeneralLayout({ children, withAuth, isAdminPage }) {
     fetchUserProfile();
   }, [children, fetchUserProfile]);
 
-  if (withAuth && !isLoginedIn) {
-    alert('You need to login first!');
-    routeTo('/login');
-    return <></>;
-  }
+  useEffect(() => {
+    console.log(withAuth, isLoggedIn);
+    if (withAuth && !isLoggedIn) {
+      alert('You need to login first!');
+      routeTo('/');
+      return;
+    }
 
-  if (isAdminPage && !userProfile?.userInfo.roles.includes(AdminRole)) {
-    alert("You don't have permission to access this page!");
-    routeTo('/');
-    return <></>;
-  }
+    if (isAdminPage && !userProfile?.userInfo.roles.includes(AdminRole)) {
+      alert("You don't have permission to access this page!");
+      routeTo('/');
+      return;
+    }
+  }, [isAdminPage, isLoggedIn, routeTo, userProfile, withAuth]);
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">

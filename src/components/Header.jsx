@@ -5,7 +5,7 @@ import { useAuth } from '../hooks/useAuth.js';
 
 const Header = ({ headerContent }) => {
   const { isLoggedIn, setLogout, userProfile } = useAuth();
-  console.log(userProfile);
+
   return (
     <header className="fixed top-0 z-10 w-full p-2 px-4 mb-12 bg-white lg:mb-0 lg:px-0">
       <div className="container mx-auto ">
