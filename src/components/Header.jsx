@@ -7,10 +7,10 @@ const Header = ({ headerContent }) => {
   const { isLoggedIn, setLogout, userProfile } = useAuth();
   console.log(userProfile);
   return (
-    <header className="relative top-0 z-20 p-4 px-4 mb-12 bg-white border-b border-gray-200 lg:mb-0 lg:px-0">
-      <div className="container mx-auto">
+    <header className="fixed top-0 z-20 w-full p-4 px-4 mb-12 bg-white lg:mb-0 lg:px-0">
+      <div className="container mx-auto ">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-x-[120px]">
+          <div className="flex items-center gap-x-[120px] ">
             <Link to="/">
               <img alt="logo_img" src={Logo} />
             </Link>
@@ -34,7 +34,7 @@ const Header = ({ headerContent }) => {
                       return (
                         <li key={element.id}>
                           <Link
-                            className="text-blue-500 hover:text-blue-600"
+                            className="px-4 py-2 rounded-lg hover:bg-gray-100"
                             to={element.path}
                           >
                             {element.label}
