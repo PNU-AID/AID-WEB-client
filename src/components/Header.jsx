@@ -7,7 +7,7 @@ const Header = ({ headerContent }) => {
   const { isLoggedIn, setLogout, userProfile } = useAuth();
   console.log(userProfile);
   return (
-    <header className="fixed top-0 z-20 w-full p-4 px-4 mb-12 bg-white lg:mb-0 lg:px-0">
+    <header className="fixed top-0 z-10 w-full p-2 px-4 mb-12 bg-white lg:mb-0 lg:px-0">
       <div className="container mx-auto ">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-x-[120px] ">
