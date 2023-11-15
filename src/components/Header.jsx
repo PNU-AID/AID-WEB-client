@@ -50,7 +50,7 @@ const Header = ({ headerContent }) => {
             <div className="flex gap-2">
               <div className="px-4 py-2">{userProfile.email}</div>
               <div
-                className="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600"
+                className="px-4 py-2 text-gray-500 rounded-lg hover:text-red-600"
                 onClick={setLogout}
               >
                 Logout
