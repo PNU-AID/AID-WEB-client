@@ -12,7 +12,7 @@ function Activity() {
         <div className="bg-gray-100 rounded-[50px] min-h-[560px] px-12 pb-12 flex flex-col text-center xl:flex-row xl:items-center xl:text-left  xl:gap-x-[60px] xl:pb-0">
           {/* image */}
           <div className="flex-1" data-aos="zoom-in-left" data-aos-once="true">
-            <img alt="Activity_img" src={image} />
+            <img alt="Activity_img" className="w-full h-full" src={image} />
           </div>
           {/* text */}
           <div className="flex-1 xl:pr-12">

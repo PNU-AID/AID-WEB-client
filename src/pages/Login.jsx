@@ -1,15 +1,18 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useAuth } from '../hooks/useAuth.js';
+import { login } from '../api/login.js';
+import { useRouter } from '../hooks/useRouter.js';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [user, setUser] = useState({
     email: '',
     password: '',
   });
-  const { login, routeToHomePage } = useAuth();
+  const { setLogin } = useAuth();
+  const { routeTo } = useRouter();
 
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
 
     const email = user.email;
@@ -20,30 +23,12 @@ function Login() {
       return;
     }
 
-    axios
-      .post(
-        'http://127.0.0.1/api/auth/login',
-        {
-          email: email,
-          password: password,
-        },
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          login(email, password);
-          routeToHomePage();
-        } else {
-          console.error(res);
-          alert('로그인이 실패했습니다.');
-        }
-      })
-      .catch((e) => {
-        console.error('Error: ', e);
-        alert('Server Error');
-      });
+    const res = await login(email, password);
+    alert('Login ' + res);
+    if (res === 'success') {
+      setLogin(email, password);
+      routeTo('/');
+    }
   }
 
   const handleInputChange = (e) => {
@@ -88,6 +73,7 @@ function Login() {
           </button>
         </form>
       </div>
+      <Link to="/signup">회원가입</Link>
     </div>
   );
 }

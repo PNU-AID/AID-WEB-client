@@ -1,12 +1,10 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { RouterProvider } from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import './App.css';
-import Header from './components/Header';
+import { routers } from './pages/Router';
 import { AuthProvider } from './auths/AuthContext';
-import { routerInfoList } from './pages/Router';
-import Authorization from './auths/Authorization';
-import { useEffect } from 'react';
 
 function App() {
   useEffect(() => {
@@ -17,28 +15,9 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Header />
-        <Routes>
-          {routerInfoList.map((routerInfo) => {
-            return (
-              <Route
-                element={
-                  routerInfo.withAuthorization ? (
-                    <Authorization>{routerInfo.element}</Authorization>
-                  ) : (
-                    routerInfo.element
-                  )
-                }
-                key={routerInfo.path}
-                path={routerInfo.path}
-              />
-            );
-          })}
-        </Routes>
-      </AuthProvider>
-    </BrowserRouter>
+    <AuthProvider>
+      <RouterProvider router={routers} />
+    </AuthProvider>
   );
 }
 

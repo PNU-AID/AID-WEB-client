@@ -4,42 +4,104 @@ import SignUp from './SignUp';
 import About from './About';
 import Study from './Study';
 import QnA from './QnA';
+import Admin from './Admin';
+import { createBrowserRouter } from 'react-router-dom';
+import GeneralLayout from '../layout/GeneralLayout';
 
-export const routerInfoList = [
+const routerData = [
   {
+    id: 0,
     path: '/',
-    element: <Home />,
-    withAuthorization: false,
     label: 'Home',
+    element: Home,
+    withAuth: false,
+    isAdminPage: false,
   },
   {
+    id: 1,
     path: '/login',
-    element: <Login />,
-    withAuthorization: false,
     label: 'Login',
+    element: Login,
+    withAuth: false,
+    isAdminPage: false,
   },
   {
+    id: 2,
     path: '/signup',
-    element: <SignUp />,
-    withAuthorization: false,
     label: 'Signup',
+    element: SignUp,
+    withAuth: false,
+    isAdminPage: false,
   },
   {
+    id: 3,
     path: '/about',
-    element: <About />,
-    withAuthorization: false,
     label: 'About',
+    element: About,
+    withAuth: false,
+    isAdminPage: false,
   },
   {
+    id: 4,
     path: '/study',
-    element: <Study />,
-    withAuthorization: true,
     label: 'Study',
+    element: Study,
+    withAuth: true,
+    isAdminPage: false,
   },
   {
+    id: 5,
     path: '/qna',
-    element: <QnA />,
-    withAuthorization: false,
     label: 'QnA',
+    element: QnA,
+    withAuth: false,
+    isAdminPage: false,
+  },
+  {
+    id: 6,
+    path: '/admin',
+    label: 'Admin',
+    element: Admin,
+    withAuth: true,
+    isAdminPage: true,
   },
 ];
+
+export const routers = createBrowserRouter(
+  routerData.map((router) => {
+    if (router.label === 'Login' || router.label === 'Signup') {
+      return {
+        path: router.path,
+        element: <router.element />,
+      };
+    }
+
+    return {
+      path: router.path,
+      element: (
+        <GeneralLayout
+          isAdminPage={router.isAdminPage}
+          withAuth={router.withAuth}
+        >
+          <router.element />
+        </GeneralLayout>
+      ),
+    };
+  })
+);
+
+export const HeaderContent = routerData.reduce((prev, router) => {
+  if (router.label === 'Login' || router.label === 'Signup') {
+    return prev;
+  }
+
+  return [
+    ...prev,
+    {
+      id: router.id,
+      path: router.path,
+      label: router.label,
+      isAdminPage: router.isAdminPage,
+    },
+  ];
+}, []);

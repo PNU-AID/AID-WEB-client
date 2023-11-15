@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../hooks/useAuth.js';
+import { Link } from 'react-router-dom';
 
 function SignUp() {
   const [user, setUser] = useState({
@@ -28,7 +29,7 @@ function SignUp() {
 
     axios
       .post(
-        'http://127.0.0.1/api/auth/signup',
+        import.meta.env.VITE_SERVER_URL + '/api/auth/signup',
         {
           email: email,
           password: password,
@@ -94,10 +95,11 @@ function SignUp() {
             type="password"
           />
           <button className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
-            Signup
+            회원가입
           </button>
         </form>
       </div>
+      <Link to="/login">로그인</Link>
     </div>
   );
 }

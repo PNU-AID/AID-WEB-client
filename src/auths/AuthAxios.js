@@ -9,6 +9,7 @@ export function postWithToken(url, data) {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    withCredentials: true,
   });
 }
 
@@ -18,6 +19,7 @@ export function getWithToken(url) {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    withCredentials: true,
   });
 }
 
@@ -27,6 +29,7 @@ export function deleteWithToken(url) {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    withCredentials: true,
   });
 }
 
@@ -36,5 +39,6 @@ export function putWithToken(url, data) {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    withCredentials: true,
   });
 }
