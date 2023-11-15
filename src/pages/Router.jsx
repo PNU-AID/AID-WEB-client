@@ -13,7 +13,7 @@ const routerData = [
     id: 0,
     path: '/',
     label: 'Home',
-    element: <Home />,
+    element: Home,
     withAuth: false,
     isAdminPage: false,
   },
@@ -21,7 +21,7 @@ const routerData = [
     id: 1,
     path: '/login',
     label: 'Login',
-    element: <Login />,
+    element: Login,
     withAuth: false,
     isAdminPage: false,
   },
@@ -29,7 +29,7 @@ const routerData = [
     id: 2,
     path: '/signup',
     label: 'Signup',
-    element: <SignUp />,
+    element: SignUp,
     withAuth: false,
     isAdminPage: false,
   },
@@ -37,7 +37,7 @@ const routerData = [
     id: 3,
     path: '/about',
     label: 'About',
-    element: <About />,
+    element: About,
     withAuth: false,
     isAdminPage: false,
   },
@@ -45,7 +45,7 @@ const routerData = [
     id: 4,
     path: '/study',
     label: 'Study',
-    element: <Study />,
+    element: Study,
     withAuth: true,
     isAdminPage: false,
   },
@@ -53,7 +53,7 @@ const routerData = [
     id: 5,
     path: '/qna',
     label: 'QnA',
-    element: <QnA />,
+    element: QnA,
     withAuth: false,
     isAdminPage: false,
   },
@@ -61,7 +61,7 @@ const routerData = [
     id: 6,
     path: '/admin',
     label: 'Admin',
-    element: <Admin />,
+    element: Admin,
     withAuth: true,
     isAdminPage: true,
   },
@@ -69,6 +69,13 @@ const routerData = [
 
 export const routers = createBrowserRouter(
   routerData.map((router) => {
+    if (router.label === 'Login' || router.label === 'Signup') {
+      return {
+        path: router.path,
+        element: <router.element />,
+      };
+    }
+
     return {
       path: router.path,
       element: (
@@ -76,7 +83,7 @@ export const routers = createBrowserRouter(
           isAdminPage={router.isAdminPage}
           withAuth={router.withAuth}
         >
-          {router.element}
+          <router.element />
         </GeneralLayout>
       ),
     };

@@ -3,11 +3,11 @@ import { createContext, useState, useMemo, useCallback } from 'react';
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [userProfile, setUserProfile] = useState(null);
+  const [userProfile, setUserProfile] = useState({ email: '', password: '' });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const setLogin = useCallback((user) => {
-    setUserProfile(user);
+  const setLogin = useCallback((email, password) => {
+    setUserProfile({ email, password });
     setIsLoggedIn(true);
   }, []);
 

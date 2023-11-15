@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useAuth } from '../hooks/useAuth.js';
 import { login } from '../api/login.js';
 import { useRouter } from '../hooks/useRouter.js';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [user, setUser] = useState({
@@ -26,6 +26,7 @@ function Login() {
     const res = await login(email, password);
     alert('Login ' + res);
     if (res === 'success') {
+      setLogin(email, password);
       routeTo('/');
     }
   }
@@ -72,6 +73,7 @@ function Login() {
           </button>
         </form>
       </div>
+      <Link to="/signup">회원가입</Link>
     </div>
   );
 }
