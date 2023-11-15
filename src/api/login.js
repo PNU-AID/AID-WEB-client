@@ -11,7 +11,7 @@ export async function login(email, password) {
     }
   );
   console.log(res);
-  const accessToken = res.headers['authorization'];
+  const accessToken = res.headers['authorization'].split(' ')[1];
   console.log(accessToken);
   if (res.status === 200 && accessToken) {
     console.log(accessToken);
