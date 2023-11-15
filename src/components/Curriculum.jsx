@@ -40,7 +40,7 @@ function Curriculum() {
               >
                 {/* bg image */}
                 <div className="absolute top-0 right-0 hidden xl:flex -z-10">
-                  <img src={bgImage} />
+                  <img alt="bg_img" className="w-full h-full" src={bgImage} />
                 </div>
                 {/* icon image */}
                 <div
@@ -48,7 +48,7 @@ function Curriculum() {
                   data-aos="zoom-in-right"
                   data-aos-once="true"
                 >
-                  <img src={image} />
+                  <img alt="icon_img" className="w-full h-full" src={image} />
                 </div>
                 {/* text */}
                 <div className="max-w-[220px]">

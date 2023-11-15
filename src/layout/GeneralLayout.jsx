@@ -13,6 +13,7 @@ function GeneralLayout({ children, withAuth, isAdminPage }) {
   const fetchUserProfile = useCallback(async () => {
     const userProfileResponse = await getCurrentUserInfo();
     if (!isLoggedIn && userProfileResponse !== null) {
+      console.log('userProfileResponse', userProfileResponse);
       setLogin(userProfileResponse);
       return;
     }

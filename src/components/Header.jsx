@@ -12,7 +12,7 @@ const Header = ({ headerContent }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-x-[120px] ">
             <Link to="/">
-              <img alt="logo_img" src={Logo} />
+              <img alt="logo_img" className="w-full h-full" src={Logo} />
             </Link>
             <div className="hidden lg:flex">
               <nav>

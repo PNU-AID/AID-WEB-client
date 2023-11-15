@@ -33,7 +33,7 @@ function Banner() {
             data-aos="fade-up"
             data-aos-delay="700"
           >
-            <img alt="Banner_img" src={image} />
+            <img alt="Banner_img" className="w-full h-full" src={image} />
           </div>
         </div>
       </div>
