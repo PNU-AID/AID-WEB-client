@@ -34,7 +34,7 @@ const Header = ({ headerContent }) => {
                       return (
                         <li key={element.id}>
                           <Link
-                            className="px-4 py-2 rounded-lg hover:bg-gray-100"
+                            className="px-4 py-2 text-gray-500 rounded-lg hover:bg-gray-100"
                             to={element.path}
                           >
                             {element.label}
@@ -59,13 +59,10 @@ const Header = ({ headerContent }) => {
           ) : (
             <div className="flex gap-2">
               <Link
-                className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                className="px-4 py-2 rounded-lg hover:text-blue-500"
                 to="/login"
               >
-                Login
-              </Link>
-              <Link className="px-4 py-2 text-blue-500" to="/signup">
-                signup
+                Login | Signup
               </Link>
             </div>
           )}
