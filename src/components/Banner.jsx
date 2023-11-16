@@ -2,7 +2,7 @@ import image from '../assets/images/banner.png';
 
 function Banner() {
   return (
-    <section className="h-screen lg:h-[calc(100vh-4em)] bg-gradient-to-b from-[#FFFFFF] to-[#F6FAFD]">
+    <section className="h-screen lg:h-100vh bg-gradient-to-b from-[#FFFFFF] to-[#F6FAFD]">
       <div className="container relative h-full mx-auto">
         <div className="flex flex-col items-center h-full xl:flex-row md:py-24">
           {/* text */}
