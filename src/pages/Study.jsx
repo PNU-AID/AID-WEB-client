@@ -33,8 +33,13 @@ function Study() {
   };
 
   return (
-    <div className="container py-12 m-auto">
+    <div className="container py-12 m-auto mt-12">
       <h1 className="mb-12 text-4xl font-bold text-center">Study</h1>
+      <div className="flex justify-end mb-4">
+        <button className="px-3 py-1 m-1 text-white bg-blue-400 rounded-xl hover:bg-blue-600">
+          등록
+        </button>
+      </div>
       <div className="flex flex-col justify-between lg:flex-row">
         <div>
           <p className="px-2 pb-1 font-bold text-gray-700">category</p>
