@@ -10,4 +10,4 @@
 ## Contributor
 
 - 김민석: @KimCookieYa
-- 이서연
+- 이서연: @yeonddori

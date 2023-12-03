@@ -46,7 +46,7 @@ const routerData = [
     path: '/study',
     label: 'Study',
     element: Study,
-    withAuth: true,
+    withAuth: false,
     isAdminPage: false,
   },
   {

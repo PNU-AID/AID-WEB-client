@@ -39,7 +39,7 @@ function GeneralLayout({ children, withAuth, isAdminPage }) {
   }, [isAdminPage, isLoggedIn, routeTo, userProfile, withAuth]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
+    <div className="flex flex-col min-h-screen">
       <Header headerContent={HeaderContent} />
       <div className="m-0">{children}</div>
     </div>
